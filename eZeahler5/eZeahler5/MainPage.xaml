@@ -1,0 +1,50 @@
+﻿
+    <?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eZeahler5"
+             x:Class="eZeahler5.MainPage"
+             xmlns:controls="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="20,30,20,20"
+                    Android="20,20,20,20">
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <StackLayout>
+        <StackLayout>
+            <Label Text="eZähler" FontSize="Large" FontAttributes="Bold"  HorizontalOptions="Center"/>
+          
+            <Entry x:Name="ZählerStand" Keyboard="Text" Placeholder="Zähler Stand" MaxLength="10" ReturnType="Done" Completed="Entry_Completed_Stand" />
+            <Entry x:Name="ZählerNummer" Keyboard="Numeric" Placeholder="Zähler Nummer" MaxLength="10" ReturnType="Done" Completed="Entry_Completed_Nummer" />
+            <Picker x:Name="eZeahlerMethods" Title="Zähler Art" SelectedIndexChanged="Picker_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>Strom</x:String>
+                    <x:String>Gas</x:String>
+                    <x:String>Wasser</x:String>
+                </Picker.Items>
+            </Picker>
+            
+            <Button x:Name="TakePhoto" Clicked="TakePhoto_Clicked" Text="Take Photo" />
+            <Button x:Name="PickPhoto" Clicked="PickPhoto_Clicked" Text="Pick Photo" />
+            <Image x:Name="MyImage" HeightRequest="140" WidthRequest="50" />
+        </StackLayout>
+        
+        <StackLayout>
+            <controls:SignaturePadView  x:Name="signatureView"
+	                            StrokeWidth="2"
+	                            StrokeColor="White"
+	                            BackgroundColor="Blue"
+                                        HeightRequest="250"
+                                        WidthRequest="100"/>
+        </StackLayout>
+        
+        <StackLayout HorizontalOptions="Center">
+            <Label Text="Pdf - generieren:" FontSize="Large"  HorizontalOptions="Center"></Label>
+            <Button Text="Generate Document" Clicked="PdfButtonClicked" HorizontalOptions="Center"/>
+            <Button Text="Test Klick" Clicked="Button_Clicked" HorizontalOptions="Center" ></Button>
+        </StackLayout>
+        
+    </StackLayout>
+</ContentPage>
